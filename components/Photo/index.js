@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 import styled, { css } from "styled-components";
 import { useInView } from "react-intersection-observer";
