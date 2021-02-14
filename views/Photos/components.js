@@ -50,8 +50,8 @@ Hero.Content = styled.div`
 `;
 
 export const Section = styled.section`
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 `;
 
 Section.Content = styled.div`
@@ -82,6 +82,8 @@ Section.ImageContent = styled(Section.Content)`
   > * {
     margin: 1rem;
     cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     transition: filter 0.3s ease;
 
     :hover {

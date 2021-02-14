@@ -2,20 +2,21 @@ import React from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { css } from "styled-components";
 
-import Photo from "@components/Photo";
 import Link from "@components/Link";
-import { Hero, Main, Section } from "@components/Pages/gallery";
+import SEO from "@components/SEO";
+import { Hero, Main, Section } from "./components";
 
-export default function GalleryPage() {
+export default function PhotosView({ data }) {
   const router = useRouter();
 
   return (
     <Main>
-      <Head>
-        <title>Next.js Demo | Gallery</title>
-      </Head>
+      <SEO
+        pageTitle="Next.js Demo | Photos"
+        description="Next.js Images Demo"
+        previewImage="/hero.jpg"
+      />
       <Hero>
         <Hero.Content>
           <h1>Image Demo</h1>
@@ -23,7 +24,7 @@ export default function GalleryPage() {
         <Hero.Image layoutId={`photo-${router.query.id}`}>
           <Image
             src={
-              router.query.id ? `/gallery/${router.query.id}.jpg` : "/hero.jpg"
+              router.query.id ? `/photos/${router.query.id}.jpg` : "/hero.jpg"
             }
             layout="fill"
             objectFit="cover"
@@ -54,12 +55,16 @@ export default function GalleryPage() {
       </Section>
       <Section>
         <Section.ImageContent>
-          {Array.from({ length: 20 }).map((_, i) => {
-            const id = i + 1;
-
+          {data.map(({ id }) => {
             return (
-              <Link key={id} href={`/ssr/gallery/${id}`}>
-                <Photo src={`/gallery/${id}.jpg`} width={250} height={250} />
+              <Link key={id} href={`/ssr/photos/${id}`}>
+                <Image
+                  alt=""
+                  src={`/photos/${id}.jpg`}
+                  layout="fixed"
+                  width={250}
+                  height={250}
+                />
               </Link>
             );
           })}

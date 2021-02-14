@@ -16,12 +16,12 @@ export const Main = styled.main`
 `;
 
 export const Section = styled.section`
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 Section.Content = styled.div`
@@ -35,9 +35,7 @@ export const ImageItem = styled.div`
   position: relative;
   width: 100%;
   max-width: 1000px;
-  height: 100%;
   min-height: 70vh;
-  max-height: 100vh;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -56,6 +54,7 @@ ImageItem.ImageContainer = styled.div`
   position: relative;
   flex: 1;
   min-height: 300px;
+  background-color: #222;
 `;
 
 ImageItem.TextContainer = styled.div`
@@ -68,4 +67,10 @@ ImageItem.TextContainer = styled.div`
     align-self: flex-end;
     margin-top: auto;
   }
+`;
+
+ImageItem.Label = styled.div`
+  font-style: italic;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
 `;
