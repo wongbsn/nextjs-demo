@@ -7,6 +7,8 @@ import Link from "@components/Link";
 import SEO from "@components/SEO";
 import { Hero, Main, Section } from "./components";
 
+const renderTypes = ["csr", "ssg", "ssr"];
+
 export default function PhotosView({ data }) {
   const router = useRouter();
   const renderType = router.pathname.split("/")[1];
@@ -41,22 +43,28 @@ export default function PhotosView({ data }) {
       </Hero>
       <Section>
         <Section.Content>
-          <h2>Summary</h2>
+          <h2>Render Method</h2>
           <p>
-            Using the Next.js Image component, images are optimized by default.
-            Next.js takes care of the complexities around resizing, optimizing,
-            and serving the most optimized version of your image based on the
-            type of browser and specific viewports.
+            This pages is rendered using the{" "}
+            <strong>{renderType.toUpperCase()}</strong> method. Use one of the
+            following links to see one of the other render methods:
           </p>
-          <p>
-            <b>Read more about it here:</b>{" "}
-            <a
-              href="https://nextjs.org/docs/basic-features/image-optimization"
-              target="_blank"
-            >
-              https://nextjs.org/docs/basic-features/image-optimization
-            </a>
-          </p>
+          <nav>
+            <ul>
+              {renderTypes.map((type) => (
+                <li key={type}>
+                  <Link
+                    href={`/${type}/photos${
+                      router.query.id ? `?id=${router.query.id}` : ""
+                    }`}
+                    disabled={type === renderType}
+                  >
+                    {type.toUpperCase()}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </Section.Content>
       </Section>
       <Section>

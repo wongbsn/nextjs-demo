@@ -23,5 +23,5 @@ export async function getStaticProps({ params }) {
 }
 
 export default function PhotosPage({ data }) {
-  return <PhotoDetailsView data={data} />;
+  return <PhotoDetailsView data={data} renderType="ssg" />;
 }

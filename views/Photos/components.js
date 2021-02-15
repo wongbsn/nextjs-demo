@@ -18,6 +18,10 @@ export const Main = styled.main`
   a {
     color: #759a9a;
   }
+
+  strong {
+    color: #77ADAA;
+  }
 `;
 
 export const Hero = styled.section`
@@ -61,6 +65,21 @@ Section.Content = styled.div`
   padding-left: 2rem;
   padding-right: 2rem;
   color: white;
+
+  ul {
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+
+    li:not(:first-of-type) {
+      padding-left: 1rem;
+    }
+
+    li:not(:last-of-type) {
+      padding-right: 1rem;
+      border-right: 1px solid white;
+    }
+  }
 
   @media screen and (min-width: 810px) {
     max-width: 83rem;

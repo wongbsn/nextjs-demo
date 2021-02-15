@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { useQuery, QueryClient, QueryClientProvider } from "react-query";
+import { useRef } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     line-height: 1.6;
+  }
+
+  a {
+    text-decoration: none;
   }
 `;
 
