@@ -3,7 +3,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import PhotoDetailsView from "@views/PhotoDetails";
 
-const fetchPhotos = async (id) => {
+const fetchPhotoById = async (id) => {
   let data = null;
 
   if (id) {
@@ -18,7 +18,7 @@ const fetchPhotos = async (id) => {
 export default function PhotosPage() {
   const router = useRouter();
   const { data } = useQuery(["id", router.query.id], () =>
-    fetchPhotos(router.query.id)
+    fetchPhotoById(router.query.id)
   );
 
   return <PhotoDetailsView data={data} />;
