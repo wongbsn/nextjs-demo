@@ -12,15 +12,15 @@ const SEO = ({ pageTitle, description, previewImage, children }) => {
         <meta name="description" content={description}></meta>
         <meta property="og:title" content={pageTitle} key="ogtitle" />
         <meta property="og:description" content={description} key="ogdesc" />
-        <meta name="twitter:card" content="summary" key="twcard" />
         <meta property="og:url" content={SITE_URL} key="ogurl" />
         {previewImage && (
-          <meta
-            property="og:image"
-            content={`${SITE_URL}${previewImage}`}
-            key="ogimage"
-          />
+          <meta property="og:image" content={previewImage} key="ogimage" />
         )}
+        <meta
+          property="twitter:card"
+          content="summary_large_image"
+          key="twcard"
+        />
         <meta property="og:site_name" content="Next.js Demo" key="ogsitename" />
         <meta property="og:title" content={pageTitle} key="ogtitle" />
         <meta property="og:description" content={description} key="ogdesc" />
