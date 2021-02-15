@@ -9,6 +9,11 @@ import { Hero, Main, Section } from "./components";
 
 export default function PhotosView({ data }) {
   const router = useRouter();
+  const renderType = router.pathname.split("/")[1];
+
+  if (!data) {
+    return null;
+  }
 
   return (
     <Main>
@@ -24,7 +29,9 @@ export default function PhotosView({ data }) {
         <Hero.Image layoutId={`photo-${router.query.id}`}>
           <Image
             src={
-              router.query.id ? `/photos/${router.query.id}.jpg` : "/hero.jpg"
+              router.query.id
+                ? `/photos/${((parseInt(router.query.id) - 1) % 20) + 1}.jpg`
+                : "/hero.jpg"
             }
             layout="fill"
             objectFit="cover"
@@ -57,10 +64,10 @@ export default function PhotosView({ data }) {
         <Section.ImageContent>
           {data.map(({ id }) => {
             return (
-              <Link key={id} href={`/ssr/photos/${id}`}>
+              <Link key={id} href={`/${renderType}/photos/${id}`}>
                 <Image
                   alt=""
-                  src={`/photos/${id}.jpg`}
+                  src={`/photos/${((parseInt(id) - 1) % 20) + 1}.jpg`}
                   layout="fixed"
                   width={250}
                   height={250}

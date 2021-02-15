@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import { useQuery, QueryClient, QueryClientProvider } from "react-query";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -23,10 +25,16 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default function App({ Component, pageProps }) {
+  const queryClientRef = useRef();
+
+  if (!queryClientRef.current) {
+    queryClientRef.current = new QueryClient();
+  }
+
   return (
-    <>
+    <QueryClientProvider client={queryClientRef.current}>
       <GlobalStyle />
       <Component {...pageProps} />
-    </>
+    </QueryClientProvider>
   );
 }

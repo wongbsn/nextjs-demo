@@ -2,8 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 
 const links = [
-  { label: "Image", to: "/image" },
-  { label: "Channel", to: "/channel" },
+  { label: "CSR", to: "/csr/photos" },
+  { label: "SSR", to: "/ssr/photos" },
+  { label: "SSG", to: "/ssg/photos" },
 ];
 
 export default function Home() {
