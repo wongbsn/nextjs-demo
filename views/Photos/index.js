@@ -13,7 +13,6 @@ export default function PhotosView({ data }) {
   const heroImage = router.query.id
     ? `${((parseInt(router.query.id) - 1) % 20) + 1}.jpg`
     : "hero.jpg";
-  const heroImageUrl = `/photos/${heroImage}`;
 
   if (!data) {
     return null;
@@ -24,7 +23,7 @@ export default function PhotosView({ data }) {
       <SEO
         pageTitle="Next.js Demo | Photos"
         description="Next.js Images Demo"
-        previewImage={heroImageUrl}
+        previewImage={`/photos/social-${heroImage}`}
       />
       <Hero>
         <Hero.Content>
@@ -32,7 +31,7 @@ export default function PhotosView({ data }) {
         </Hero.Content>
         <Hero.Image>
           <Image
-            src={heroImageUrl}
+            src={`/photos/${heroImage}`}
             layout="fill"
             objectFit="cover"
             objectPosition="50% 50%"
