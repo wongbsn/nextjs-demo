@@ -10,6 +10,10 @@ import { Hero, Main, Section } from "./components";
 export default function PhotosView({ data }) {
   const router = useRouter();
   const renderType = router.pathname.split("/")[1];
+  const heroImage = router.query.id
+    ? `${((parseInt(router.query.id) - 1) % 20) + 1}.jpg`
+    : "hero.jpg";
+  const heroImageUrl = `/photos/${heroImage}`;
 
   if (!data) {
     return null;
@@ -20,19 +24,15 @@ export default function PhotosView({ data }) {
       <SEO
         pageTitle="Next.js Demo | Photos"
         description="Next.js Images Demo"
-        previewImage="/hero.jpg"
+        previewImage={heroImageUrl}
       />
       <Hero>
         <Hero.Content>
           <h1>Image Demo</h1>
         </Hero.Content>
-        <Hero.Image layoutId={`photo-${router.query.id}`}>
+        <Hero.Image>
           <Image
-            src={
-              router.query.id
-                ? `/photos/${((parseInt(router.query.id) - 1) % 20) + 1}.jpg`
-                : "/hero.jpg"
-            }
+            src={heroImageUrl}
             layout="fill"
             objectFit="cover"
             objectPosition="50% 50%"

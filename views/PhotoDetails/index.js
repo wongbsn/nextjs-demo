@@ -14,8 +14,8 @@ export default function PhotoDetailPage({ data }) {
     <Main>
       <SEO
         pageTitle={`Next.js Demo | Photo ${data.id}`}
-        description="Next.js Images Demo"
-        previewImage={`/photos/${data.id}.jpg`}
+        description={`Photo taken by ${data.photographer}`}
+        previewImage={`/photos/social-${data.id}.jpg`}
       />
       <Section>
         <Section.Content>
