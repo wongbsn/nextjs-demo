@@ -15,7 +15,7 @@ export default function PhotosView({ data }) {
   const id = router.query.id
     ? ((parseInt(router.query.id) - 1) % 20) + 1
     : null;
-  const heroImage = id ? `${id}.jpg` : "hero.jpg";
+  const heroImage = id ? `/photos/${id}.jpg` : "/photos/hero.jpg";
   const search = id ? `?${queryString.stringify(router.query)}` : "";
   const previewImage = id ? `/api/image${search}` : heroImage;
 
@@ -36,7 +36,7 @@ export default function PhotosView({ data }) {
         </Hero.Content>
         <Hero.Image>
           <Image
-            src={`/photos/${heroImage}`}
+            src={heroImage}
             layout="fill"
             objectFit="cover"
             objectPosition="50% 50%"
