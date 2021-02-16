@@ -1,19 +1,15 @@
 import axios from "axios";
 import PhotosView from "@views/Photos";
+import photosData from "../../../data/photos.json";
 
-export async function getServerSideProps({ req }) {
-  const protocol = req.protocol === "https" ? "https:" : "http:";
-  const { data } = await axios.get(
-    `${protocol}//${req.headers.host}/api/photos`
-  );
-
+export async function getServerSideProps() {
   return {
     props: {
-      data,
+      data: photosData,
     },
   };
 }
 
-export default function PhotosPage(props) {
-  return <PhotosView {...props} />;
+export default function PhotosPage({ data }) {
+  return <PhotosView data={data} />;
 }

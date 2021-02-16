@@ -1,27 +1,16 @@
-import axios from "axios";
 import PhotoDetailsView from "@views/PhotoDetails";
+import photosData from "../../../data/photos.json";
 
-export async function getServerSideProps({ req, params }) {
-  const protocol = req.protocol === "https" ? "https:" : "http:";
-  let data = null;
-
-  try {
-    const response = await axios.get(
-      `${protocol}//${req.headers.host}/api/photos?id=${params.id}`
-    );
-
-    data = response.data[0];
-  } catch (error) {
-    console.error(error);
-  }
+export async function getServerSideProps({ params }) {
+  const data = photosData.filter(({ id }) => id === params.id);
 
   return {
     props: {
-      data,
+      data: data[0],
     },
   };
 }
 
-export default function PhotosPage(props) {
-  return <PhotoDetailsView {...props} />;
+export default function PhotosPage({ data }) {
+  return <PhotoDetailsView data={data} />;
 }

@@ -14,7 +14,6 @@ export default function PhotosView({ data }) {
   const heroImage = router.query.id
     ? `${((parseInt(router.query.id) - 1) % 20) + 1}.jpg`
     : "hero.jpg";
-  const photoImage = `/photos/${((parseInt(id) - 1) % 20) + 1}.jpg`;
 
   if (!data) {
     return null;
@@ -70,6 +69,8 @@ export default function PhotosView({ data }) {
       <Section>
         <Section.ImageContent>
           {data.map(({ id }) => {
+            const photoImage = `/photos/${((parseInt(id) - 1) % 20) + 1}.jpg`;
+
             return (
               <Link key={id} href={`/${renderType}/photos/${id}`}>
                 <Image
