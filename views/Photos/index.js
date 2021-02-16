@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import queryString from "query-string";
 
 import Link from "@components/Link";
 import SEO from "@components/SEO";
@@ -11,9 +12,12 @@ const renderTypes = ["csr", "ssg", "ssr"];
 export default function PhotosView({ data }) {
   const router = useRouter();
   const renderType = router.pathname.split("/")[1];
-  const heroImage = router.query.id
-    ? `${((parseInt(router.query.id) - 1) % 20) + 1}.jpg`
-    : "hero.jpg";
+  const id = router.query.id
+    ? ((parseInt(router.query.id) - 1) % 20) + 1
+    : null;
+  const heroImage = id ? `${id}.jpg` : "hero.jpg";
+  const search = id ? `?${queryString.stringify(router.query)}` : "";
+  const previewImage = id ? `/api/image${search}` : heroImage;
 
   if (!data) {
     return null;
@@ -24,7 +28,7 @@ export default function PhotosView({ data }) {
       <SEO
         pageTitle="Next.js Demo | Photos"
         description="Next.js Images Demo"
-        previewImage={`/photos/social-${heroImage}`}
+        previewImage={previewImage}
       />
       <Hero>
         <Hero.Content>

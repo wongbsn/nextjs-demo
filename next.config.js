@@ -13,4 +13,7 @@ module.exports = {
   images: {
     deviceSizes: [375, 500, 640, 768, 1200, 1920, 2560, 3440, 3840],
   },
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname,
+  },
 };
