@@ -17,7 +17,7 @@ export default function PhotosView({ data }) {
     : null;
   const heroImage = id ? `/photos/${id}.jpg` : "/photos/hero.jpg";
   const search = id ? `?${queryString.stringify(router.query)}` : "";
-  const previewImage = id ? `/api/image${search}` : heroImage;
+  const previewImage = id ? `/api/image${search}` : "/photos/social-hero.jpg";
 
   if (!data) {
     return null;
