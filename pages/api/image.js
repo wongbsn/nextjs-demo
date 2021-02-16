@@ -6,16 +6,22 @@ registerFont(path.resolve("./public", "fonts", "Cabin-SemiBold.ttf"), {
   family: "Cabin",
 });
 
-async function drawImage(filePath, text = "", fontSize = 90, color = "white") {
+async function drawImage(
+  filePath,
+  text = "",
+  fontSize = "90",
+  color = "white"
+) {
   const canvas = createCanvas(1200, 600);
   const ctx = canvas.getContext("2d");
   const image = await loadImage(filePath);
-  const lineHeight = fontSize * 0.75;
+  const fSize = parseInt(fontSize);
+  const lineHeight = fSize * 1;
 
   ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
   ctx.fillStyle = color.replace("@", "#");
   ctx.textAlign = "center";
-  ctx.font = `${fontSize}px Cabin`;
+  ctx.font = `${fSize}px Cabin`;
   ctx.shadowColor = "black";
   ctx.shadowBlur = 8;
   ctx.lineWidth = 2;
@@ -24,16 +30,12 @@ async function drawImage(filePath, text = "", fontSize = 90, color = "white") {
   const x = 600;
   const y = 300;
 
-  for (var i = 0; i < lines.length; i++) {
-    const values = [
-      lines[i],
-      x,
-      y +
-        i * lineHeight -
-        (lines.length - i - 1) *
-          ((lineHeight / lines.length) * (lines.length - 1)),
-    ];
+  const lineConstant = (lines.length * lineHeight) / (0.8 + lines.length * 0.15);
 
+  for (var i = 0; i < lines.length; i++) {
+    let offset = (lines.length - i) * lineHeight;
+
+    const values = [lines[i], x, y - offset + lineConstant];
     ctx.strokeText(...values);
     ctx.fillText(...values);
   }
