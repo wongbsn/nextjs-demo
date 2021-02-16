@@ -1,7 +1,5 @@
 import { createCanvas, loadImage } from "canvas";
 import path from "path";
-import fs from "fs";
-import getConfig from "next/config";
 import photosData from "../../data/photos.json";
 
 async function drawImage(filePath, text = "", color = "white") {
@@ -53,10 +51,8 @@ export default async function (req, res) {
       res.statusCode = 404;
       res.end(`Photo ${req.query.id} not found`);
     } else {
-      const { serverRuntimeConfig } = getConfig();
       const filePath = path.join(
-        serverRuntimeConfig.PROJECT_ROOT,
-        `./public/photos/social-${data[0].id}.jpg`
+        path.resolve("./public", "photos", `social-${data[0].id}.jpg`)
       );
 
       const canvas = await drawImage(filePath, req.query.text, req.query.color);
