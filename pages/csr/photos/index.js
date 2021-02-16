@@ -1,6 +1,5 @@
-import { useRef } from "react";
 import axios from "axios";
-import { useQuery, QueryClient, QueryClientProvider } from "react-query";
+import { useQuery } from "react-query";
 import PhotosView from "@views/Photos";
 
 const fetchPhotos = async () => {
