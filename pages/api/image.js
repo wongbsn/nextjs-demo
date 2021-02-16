@@ -30,13 +30,14 @@ async function drawImage(
   const x = 600;
   const y = 300;
 
-  const lineConstant =
-    (lines.length * lineHeight) / (0.8 + lines.length * 0.15);
+  const lineConstant = (lines.length * lineHeight) / 2.2;
 
   for (var i = 0; i < lines.length; i++) {
-    let offset = (lines.length - i) * lineHeight;
+    let offset = (lines.length - i) * -lineHeight + lineHeight;
 
-    const values = [lines[i], x, y - offset + lineConstant];
+    const values = [lines[i], x, y + offset + lineConstant];
+
+    console.log(offset);
     ctx.strokeText(...values);
     ctx.fillText(...values);
   }
