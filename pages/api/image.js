@@ -37,7 +37,6 @@ async function drawImage(
 
     const values = [lines[i], x, y + offset + lineConstant];
 
-    console.log(offset);
     ctx.strokeText(...values);
     ctx.fillText(...values);
   }
@@ -69,7 +68,7 @@ export default async function (req, res) {
         req.query.color
       );
 
-      res.setHeader("Content-Type", "image/png");
+      res.setHeader("Content-Type", "image/jpg");
 
       canvas.createJPEGStream().pipe(res);
     }
