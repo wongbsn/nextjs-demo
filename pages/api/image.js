@@ -12,7 +12,7 @@ async function drawImage(filePath, text = "", color = "white") {
   ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
   ctx.fillStyle = color.replace("@", "#");
   ctx.textAlign = "center";
-  ctx.font = `${fontSize}px Lato`;
+  ctx.font = `${fontSize}px Arial`;
   ctx.shadowColor = "black";
   ctx.shadowBlur = 7;
   ctx.lineWidth = 5;
