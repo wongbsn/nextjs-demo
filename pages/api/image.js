@@ -9,7 +9,7 @@ registerFont(path.resolve("./public", "fonts", "Cabin-SemiBold.ttf"), {
 async function drawImage(
   filePath,
   text = "",
-  fontSize = "90",
+  fontSize = "140",
   color = "white"
 ) {
   const canvas = createCanvas(1200, 600);
@@ -30,7 +30,7 @@ async function drawImage(
   const x = 600;
   const y = 300;
 
-  const lineConstant = (lines.length * lineHeight) / 2.2;
+  const lineConstant = (lines.length * lineHeight) / 2.4;
 
   for (var i = 0; i < lines.length; i++) {
     let offset = (lines.length - i) * -lineHeight + lineHeight;
