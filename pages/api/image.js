@@ -26,11 +26,12 @@ async function drawImage(
   ctx.shadowBlur = 8;
   ctx.lineWidth = 2;
 
-  const lines = text.split("\\n");
+  const lines = text.split("_");
   const x = 600;
   const y = 300;
 
-  const lineConstant = (lines.length * lineHeight) / (0.8 + lines.length * 0.15);
+  const lineConstant =
+    (lines.length * lineHeight) / (0.8 + lines.length * 0.15);
 
   for (var i = 0; i < lines.length; i++) {
     let offset = (lines.length - i) * lineHeight;
